@@ -7,8 +7,7 @@ var gravedad = 10
 var speed = 30
 var suelo = Vector2(0,-1)
 var velocidad = Vector2()
-#Esto no sé si es así
-var direccion = 1
+var direccion = -1
 
 var is_dead = false
 
@@ -49,9 +48,16 @@ func _process(delta):
 		$AnimatedSprite.play("Run")
 		velocidad.y += gravedad
 		velocidad = move_and_slide(velocidad,suelo)
-	
-
 
 
 func _on_Timer_timeout():
 	queue_free()
+	
+
+
+
+func _on_Area2D_body_entered(body):
+	if body.get_name() == "KinematicBody2D":
+		body._loseLife(position.x)
+		pass
+		

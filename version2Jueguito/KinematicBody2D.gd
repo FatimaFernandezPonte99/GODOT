@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+#PARA QUE RESTEN VIDAS LOS ENEMIGOS
+signal player_hit
+
 export (PackedScene) var ice
 
 const acceleration = 70
@@ -11,9 +14,18 @@ var jump_speed = 620
 var gravity = 40
 
 var velocity = Vector2.ZERO
+#?
+var lifes = 3 
+
+var motion = Vector2()
+
+
 
 func _ready():
+	var nombre_del_nodo = get_name()
+	print("Nombre del nodo:", nombre_del_nodo)
 	$AnimatedSprite.playing = true
+	
 
 func _physics_process(_delta):
 	move()
@@ -68,3 +80,26 @@ func jump():
 		if velocity.y > 1:
 			$AnimatedSprite.animation = "Falling"
 	
+
+func _loseLife(var enemyposx):
+	#Para cuando está a la izquierda del enemigo
+	if position.x < enemyposx:
+		print("derecha")
+		velocity.x = -1000
+		velocity.y = -500
+	#Para cuando está a la derecha del enemigo
+	if position.x > enemyposx:
+		print("izquierda")
+		motion.x = 1000
+		motion.y = -500
+	
+	lifes = lifes - 1
+	
+	var canvasLayer = get_tree().get_root().find_node("CanvasLayer",true,false)
+	canvasLayer.handleHearts(lifes)
+	
+	#Ponemos menor igual por si acaso se le restan varias a la vez, que no rompa
+	if lifes <= 0:
+		get_tree().reload_current_scene()
+
+
