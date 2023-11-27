@@ -25,3 +25,7 @@ func _on_Mandarina_body_entered(body):
 	#mandarinas_conseguidas += 1
 	#print(mandarinas_conseguidas)
 	#queue_free()
+
+
+
+	

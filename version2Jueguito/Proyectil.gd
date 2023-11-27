@@ -12,7 +12,7 @@ func _ready():
 
 #Para matar a los enemigos
 func _on_Proyectil_body_entered(body):
-	if "Enemigo1" in body.name:
+	if "Enemigo" in body.name:
 		body.dead()
 		queue_free()
 

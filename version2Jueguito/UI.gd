@@ -21,16 +21,42 @@ func _ready():
 	var mandarinaNode = get_tree().get_root().find_node("Mandarina",true,false)
 	var mandarinaNode2 = get_tree().get_root().find_node("Mandarina2",true,false)
 	var mandarinaNode3 = get_tree().get_root().find_node("Mandarina3",true,false)
+	var mandarinaNode4 = get_tree().get_root().find_node("Mandarina4",true,false)
+	var mandarinaNode5 = get_tree().get_root().find_node("Mandarina5",true,false)
+	var mandarinaNode6 = get_tree().get_root().find_node("Mandarina6",true,false)
+	var mandarinaNode7 = get_tree().get_root().find_node("Mandarina7",true,false)
+	var mandarinaNode8 = get_tree().get_root().find_node("Mandarina8",true,false)
+	var mandarinaNode9 = get_tree().get_root().find_node("Mandarina9",true,false)
+	var mandarinaNode10 = get_tree().get_root().find_node("Mandarina10",true,false)
+	var mandarinaNode11 = get_tree().get_root().find_node("Mandarina11",true,false)
+	var mandarinaNode12 = get_tree().get_root().find_node("Mandarina12",true,false)
 	#Una vez asignada, conectamos la variable al método que creamos :
 	mandarinaNode.connect("mandarinaCollected",self,"handleMandarinaCollected")
 	mandarinaNode2.connect("mandarinaCollected",self,"handleMandarinaCollected")
 	mandarinaNode3.connect("mandarinaCollected",self,"handleMandarinaCollected")
+	mandarinaNode4.connect("mandarinaCollected",self,"handleMandarinaCollected")
+	mandarinaNode5.connect("mandarinaCollected",self,"handleMandarinaCollected")
+	mandarinaNode6.connect("mandarinaCollected",self,"handleMandarinaCollected")
+	mandarinaNode7.connect("mandarinaCollected",self,"handleMandarinaCollected")
+	mandarinaNode8.connect("mandarinaCollected",self,"handleMandarinaCollected")
+	mandarinaNode9.connect("mandarinaCollected",self,"handleMandarinaCollected")
+	mandarinaNode10.connect("mandarinaCollected",self,"handleMandarinaCollected")
+	mandarinaNode11.connect("mandarinaCollected",self,"handleMandarinaCollected")
+	mandarinaNode12.connect("mandarinaCollected",self,"handleMandarinaCollected")
+	
 	
 	$MandarinasCollectedText.text = String(mandarinas)
 	
 	#VIDAS
 	var vidaNode = get_tree().get_root().find_node("Vida",true,false)
+	var vidaNode2 = get_tree().get_root().find_node("Vida2",true,false)
+	var vidaNode3 = get_tree().get_root().find_node("Vida3",true,false)
+	var vidaNode4 = get_tree().get_root().find_node("Vida4",true,false)
+	
 	vidaNode.connect("vidaCollected",self,"handleVidaCollected") 
+	vidaNode2.connect("vidaCollected",self,"handleVidaCollected") 
+	vidaNode3.connect("vidaCollected",self,"handleVidaCollected") 
+	vidaNode4.connect("vidaCollected",self,"handleVidaCollected") 
 	
 	#Que reste vida
 	#var playerNode = get_tree().get_root().find_node("KinematicBody2D",true,false)
@@ -41,6 +67,9 @@ func handleMandarinaCollected():
 	print("Mandarina Collected")
 	mandarinas += 1
 	$MandarinasCollectedText.text = String(mandarinas)
+	#PARA PASAR DE NIVEL esto planeo hacerlo con un botón pero no va
+	if $MandarinasCollectedText.text == "12":
+		get_tree().change_scene("res://Level.tscn")
 
 
 #Para las vidas
@@ -60,7 +89,8 @@ func handleHearts(var lifes):
 func handleVidaCollected():
 	print("Vida Collected")
 	var player = get_tree().get_root().find_node("KinematicBody2D",true,false)
-	player.lifes = player.lifes + 1
+	if player.lifes < 3:
+		player.lifes = player.lifes + 1
 	print(player.lifes)
 	handleHearts(player.lifes)
 	if player.lifes == 3:

@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TEXTO:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 40, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TEXTO:percent_visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "SET_TEXTO"
+tracks/0/type = "value"
+tracks/0/path = NodePath("TEXTO:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="INTERFAZ" type="CanvasLayer"]
+pause_mode = 2
+
+[node name="FONDO" type="ColorRect" parent="."]
+margin_right = 212.0
+margin_bottom = 41.0
+color = Color( 0.309804, 0.133333, 0.294118, 0.572549 )
+
+[node name="TEXTO" type="Label" parent="."]
+margin_left = 40.0
+margin_right = 210.0
+margin_bottom = 41.0
+autowrap = true
+
+[node name="IMAGEN" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="CUADRO" type="ReferenceRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+border_color = Color( 0.0431373, 0.0392157, 0.0392157, 1 )
+
+[node name="BOTÓN" type="Button" parent="."]
+margin_left = 193.0
+margin_top = 20.0
+margin_right = 210.0
+margin_bottom = 40.0
+text = "+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/SET_TEXTO = SubResource( 1 )
