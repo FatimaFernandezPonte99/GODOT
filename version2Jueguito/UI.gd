@@ -19,8 +19,12 @@ func _ready():
 	
 	#Esta variable buscará en nuestro mundo un objeto que tenga el script asignado, en este caso "Mandarina"
 	var mandarinaNode = get_tree().get_root().find_node("Mandarina",true,false)
+	var mandarinaNode2 = get_tree().get_root().find_node("Mandarina2",true,false)
+	var mandarinaNode3 = get_tree().get_root().find_node("Mandarina3",true,false)
 	#Una vez asignada, conectamos la variable al método que creamos :
 	mandarinaNode.connect("mandarinaCollected",self,"handleMandarinaCollected")
+	mandarinaNode2.connect("mandarinaCollected",self,"handleMandarinaCollected")
+	mandarinaNode3.connect("mandarinaCollected",self,"handleMandarinaCollected")
 	
 	$MandarinasCollectedText.text = String(mandarinas)
 	
@@ -44,14 +48,13 @@ func handleHearts(var lifes):
 	if lifes == 0:
 		heart1.visible = false
 		
-	elif lifes == 1:
+	if lifes == 1:
 		heart2.visible = false
 		
-	elif lifes == 2:
+	if lifes == 2:
 		heart3.visible = false
 	
-	elif lifes > 2:
-		heart3.visible = true
+		
 
 
 func handleVidaCollected():
@@ -60,7 +63,10 @@ func handleVidaCollected():
 	player.lifes = player.lifes + 1
 	print(player.lifes)
 	handleHearts(player.lifes)
+	if player.lifes == 3:
+		heart3.visible = true
+	if player.lifes == 2:
+		heart2.visible = true
+	if player.lifes == 1:
+		heart1.visible = true
 	#$VidasCollectedText.text = String(vidas)
-	
-
-

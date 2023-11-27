@@ -7,8 +7,7 @@ var gravedad = 10
 var speed = 30
 var suelo = Vector2(0,-1)
 var velocidad = Vector2()
-#Esto no sé si es así
-var direccion = 1
+var direccion = -1
 
 var is_dead = false
 
@@ -21,13 +20,12 @@ func _ready():
 func dead():
 	is_dead = true
 	velocidad = Vector2(0,0)
-	$AnimatedSprite.animation = "Dead"
-	
+	$AnimatedSprite.play("Dead")
+	$CollisionShape2D.set_deferred("disabled",true)
+	$Timer.start()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#A lo mejor NO hay que meter todo dentro de esta if
 	if is_dead == false:
 		velocidad.x = speed * direccion
 	
@@ -38,9 +36,25 @@ func _process(delta):
 	
 		if is_on_wall():
 			direccion = direccion*-1
+			$RayCast2D.position.x*=-1
 			velocidad.x = speed * direccion
 		
+		
+			if $RayCast2D.is_colliding() == true:
+				direccion = direccion*-1
+				$RayCast2D.position.x*=-1
+				velocidad.x = speed * direccion
+	
 		$AnimatedSprite.play("Run")
 		velocidad.y += gravedad
 		velocidad = move_and_slide(velocidad,suelo)
+
+
+func _on_Timer_timeout():
+	queue_free()
 	
+
+func _on_Area2D_body_entered(body):
+	if body.get_name() == "KinematicBody2D":
+		body._loseLife(position.x)
+		pass

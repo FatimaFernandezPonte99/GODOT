@@ -10,7 +10,7 @@
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Proyectil.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Vida.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Enemigo1PLATAFORMA.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Enemigo1.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Mandarina.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Sprite Pack 5/mandarina/n_1.png" type="Texture" id=13]
 [ext_resource path="res://UI.gd" type="Script" id=14]
@@ -104,15 +104,6 @@ drag_margin_h_enabled = true
 
 [node name="Proyectil" parent="KinematicBody2D" instance=ExtResource( 9 )]
 position = Vector2( 87, 119 )
-
-[node name="Enemigo1PLATAFORMA" parent="." instance=ExtResource( 11 )]
-position = Vector2( 223, 63 )
-
-[node name="Enemigo1PLATAFORMA2" parent="." instance=ExtResource( 11 )]
-position = Vector2( 632, 143 )
-
-[node name="Enemigo1PLATAFORMA3" parent="." instance=ExtResource( 11 )]
-position = Vector2( 235, 159 )
 
 [node name="Vida" parent="." instance=ExtResource( 10 )]
 position = Vector2( 469, 16 )
@@ -210,5 +201,8 @@ margin_top = 6.0
 margin_right = 119.0
 margin_bottom = 29.0
 custom_styles/panel = SubResource( 2 )
+
+[node name="Enemigo1" parent="." instance=ExtResource( 11 )]
+position = Vector2( 226, 152 )
 
 [editable path="KinematicBody2D/Camera"]
