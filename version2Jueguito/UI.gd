@@ -68,7 +68,7 @@ func handleMandarinaCollected():
 	mandarinas += 1
 	$MandarinasCollectedText.text = String(mandarinas)
 	#PARA PASAR DE NIVEL esto planeo hacerlo con un botón pero no va
-	if $MandarinasCollectedText.text == "1":
+	if $MandarinasCollectedText.text == "12":
 		get_tree().change_scene("res://Level2.tscn")
 
 
@@ -100,3 +100,15 @@ func handleVidaCollected():
 	if player.lifes == 1:
 		heart1.visible = true
 	#$VidasCollectedText.text = String(vidas)
+
+#ESTO CREO QUE LO VOY A HACER CON UN CANVAS
+#Para que cuando pulses exit te pause el juego
+func _process(delta):
+	menu_ctrl()
+
+#Pues eso
+func menu_ctrl():
+	if Input.is_action_just_pressed("ui_cancel") and get_tree().paused:
+		get_tree().paused = false
+	elif Input.is_action_just_pressed("ui_cancel") and get_tree().paused == false:
+		get_tree().paused = true

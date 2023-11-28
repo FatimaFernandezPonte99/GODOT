@@ -77,6 +77,7 @@ func jump():
 	if !is_on_floor():
 		if velocity.y < -1:
 			$AnimatedSprite.animation = "Jump"
+			$Jump.play()
 		if velocity.y > 1:
 			$AnimatedSprite.animation = "Falling"
 	

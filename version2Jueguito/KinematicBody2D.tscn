@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Sprite Pack 5/2 - Lil Wiz/Idle_1.png" type="Texture" id=1]
 [ext_resource path="res://Sprite Pack 5/2 - Lil Wiz/Idle_2.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Sprite Pack 5/2 - Lil Wiz/ataque_1.png" type="Texture" id=18]
 [ext_resource path="res://Proyectil.tscn" type="PackedScene" id=19]
 [ext_resource path="res://JUMP.png" type="Texture" id=20]
+[ext_resource path="res://SONIDOS/cartoon-jump-6462.mp3" type="AudioStream" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -71,6 +72,7 @@ shape = SubResource( 2 )
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 1, 2 )
+stream = ExtResource( 21 )
 
 [node name="Proyectil" parent="." instance=ExtResource( 19 )]
 position = Vector2( 40, 130 )
