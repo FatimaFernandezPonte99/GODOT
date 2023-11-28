@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/game-music-loop-7-145285.mp3-ed91e1974c3b6ae7c0f3e81541239ba1.mp3str"
+
+[deps]
+
+source_file="res://SONIDOS/game-music-loop-7-145285.mp3"
+dest_files=[ "res://.import/game-music-loop-7-145285.mp3-ed91e1974c3b6ae7c0f3e81541239ba1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

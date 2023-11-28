@@ -22,6 +22,7 @@ func _on_Mandarina_body_entered(body):
 		emit_signal("mandarinaCollected")
 		queue_free()
 	
+	
 	#mandarinas_conseguidas += 1
 	#print(mandarinas_conseguidas)
 	#queue_free()

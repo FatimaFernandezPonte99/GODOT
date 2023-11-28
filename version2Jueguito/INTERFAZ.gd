@@ -1,10 +1,11 @@
 extends CanvasLayer
 
-enum NPCS{HADITA, HADITA2} #0,#1
+enum NPCS{HADITA, HADITA2, HADITA3} #0,#1
 
 const IMAGENES : Dictionary = {
 	'HADITA' : preload ("res://FairyAID.png"),
-	'HADITA2': preload ("res://FairyA2ID2.png")
+	'HADITA2': preload ("res://FairyA2ID2.png"),
+	'HADITA3': preload("res://FairyA.ID3png.png")
 }
 #FALTA PONER LA HADITA2 A PARTIR DE AQUÍ
 const TEXTOS_HADITA : Array = [
@@ -18,6 +19,7 @@ const TEXTOS_HADITA : Array = [
 	'HADITA: No es complicado, te lo ',
 	'HADITA: prometo, solo tendrás que',
 	'HADITA: recoger esas mandarinas para mí',
+	'HADITA: TODAS porfi ^.^',
 	'HADITA: ¿Que para qué son?',
 	'HADITA:  Verás, ADORO la macedonia ^-^',
 	'HADITA: ¡PERO CUIDADO!',
@@ -30,18 +32,20 @@ const TEXTOS_HADITA : Array = [
 ]
 
 const TEXTOS_HADITA2 : Array = [
-	'HADITA: Veo que has conseguido',
-	'HADITA: llegar hasta aquí...',
-	'HADITA: ¡Qué bien!',
+	'HADITA: Veo que has conseguido llegar',
+	'HADITA: hasta aquí... ¡Qué bien!',
 	'HADITA: ...',
-	'HADITA: Sí, la otra hadita',
-	'HADITA: es mi amiga,',
-	'HADITA: queremos hacer una',
-	'HADITA: fiesta de la',
-	'HADITA: macedonia!! ^-^',
-	'HADITA: si pudieras recoger',
-	'HADITA: estas ----',
-	'HADITA: por nosotras... *.*'
+	'HADITA: Sí, la otra hadita es mi ',
+	'HADITA: amiga, queremos hacer una',
+	'HADITA: fiesta de la macedonia!! ^-^',
+	'HADITA: si pudieras recoger todas las',
+	'HADITA: fresitas por nosotras... *.*',
+]
+
+const TEXTOS_HADITA3 : Array = [
+	'HADITA: ¡No me puedo creer que estés',
+	'HADITA: aquí! Ya queda poco, me conseguirías',
+	'HADITA: esas sandías de ahí? *.*'
 ]
 
 #Para ver por dónde va hablando
@@ -64,12 +68,21 @@ func _on_HADITA_body_entered(body):
 	if body.is_in_group("Player"):
 		poner_TEXTO(TEXTOS_HADITA[chats],NPCS.HADITA,IMAGENES['HADITA'])
 		chats += 1
+	
+
 
 #NPC HADITA2
 #Esto a lo mejor tienes que conectarlo a mano
 func _on_HADITA2_body_entered(body):
 	if body.is_in_group("Player"):
 		poner_TEXTO(TEXTOS_HADITA2[chats],NPCS.HADITA2,IMAGENES['HADITA2'])
+		chats += 1
+		
+
+#NPC HADITA3
+func _on_HADITA3_body_entered(body):
+	if body.is_in_group("Player"):
+		poner_TEXTO(TEXTOS_HADITA3[chats],NPCS.HADITA3,IMAGENES['HADITA3'])
 		chats += 1
 
 
@@ -92,5 +105,13 @@ func _on_BOTN_pressed():
 			else:
 				#conversación acabó
 				chats -= TEXTOS_HADITA2.size()
+				hide()
+		NPCS.HADITA3:
+			if chats < TEXTOS_HADITA3.size():
+				poner_TEXTO(TEXTOS_HADITA3[chats],NPCS.HADITA3,IMAGENES['HADITA3'])
+				chats += 1
+			else:
+				#conversación acabó
+				chats -= TEXTOS_HADITA3.size()
 				hide()
 				

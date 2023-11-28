@@ -22,8 +22,6 @@ var motion = Vector2()
 
 
 func _ready():
-	var nombre_del_nodo = get_name()
-	print("Nombre del nodo:", nombre_del_nodo)
 	$AnimatedSprite.playing = true
 	
 
@@ -36,7 +34,8 @@ func move():
 	velocity.y += gravity
 	
 	if Input.is_action_just_pressed("shoot"):
-		#FALTA METER LA ANIMACIÓN DEL DISPARO
+		$Bonus.playing = true
+		$Timer.start()
 		var midisparo = PROYECTIL.instance()
 		get_parent().add_child(midisparo)
 		midisparo.position = $Position2D.global_position
@@ -46,6 +45,9 @@ func move():
 			midisparo.set_direccion_proyectil(1)
 		else:
 			midisparo.set_direccion_proyectil(-1)
+			
+	
+			
 	
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = min(velocity.x + acceleration, max_speed)
@@ -72,12 +74,15 @@ func move():
 func jump():
 	if is_on_floor():
 		if Input.is_action_just_pressed("ui_up"):
+			$Jump.playing = true
 			velocity.y -= jump_speed
+		else:
+			$Jump.playing = false
+		
 	
 	if !is_on_floor():
 		if velocity.y < -1:
 			$AnimatedSprite.animation = "Jump"
-			$Jump.play()
 		if velocity.y > 1:
 			$AnimatedSprite.animation = "Falling"
 	
@@ -85,14 +90,12 @@ func jump():
 func _loseLife(var enemyposx):
 	#Para cuando está a la izquierda del enemigo
 	if position.x < enemyposx:
-		print("derecha")
-		velocity.x = -1000
-		velocity.y = -500
+		velocity.x = -500
+		velocity.y = -250
 	#Para cuando está a la derecha del enemigo
 	if position.x > enemyposx:
-		print("izquierda")
-		motion.x = 1000
-		motion.y = -500
+		motion.x = 500
+		motion.y = -250
 	
 	lifes = lifes - 1
 	
@@ -104,3 +107,8 @@ func _loseLife(var enemyposx):
 		get_tree().reload_current_scene()
 
 
+
+
+
+func _on_Timer_timeout():
+	$Bonus.playing = false

@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 var mandarinas = 0
+var fresitas = 0
+var meloncitos = 0
 
 #Para las vidas
 var heart1
@@ -17,6 +19,7 @@ func _ready():
 	heart2 = get_node("Heart2")
 	heart3 = get_node("Heart3")
 	
+	#MANDARINAS
 	#Esta variable buscará en nuestro mundo un objeto que tenga el script asignado, en este caso "Mandarina"
 	var mandarinaNode = get_tree().get_root().find_node("Mandarina",true,false)
 	var mandarinaNode2 = get_tree().get_root().find_node("Mandarina2",true,false)
@@ -46,6 +49,7 @@ func _ready():
 	
 	
 	$MandarinasCollectedText.text = String(mandarinas)
+	#-------------
 	
 	#VIDAS
 	var vidaNode = get_tree().get_root().find_node("Vida",true,false)
@@ -58,19 +62,88 @@ func _ready():
 	vidaNode3.connect("vidaCollected",self,"handleVidaCollected") 
 	vidaNode4.connect("vidaCollected",self,"handleVidaCollected") 
 	
-	#Que reste vida
-	#var playerNode = get_tree().get_root().find_node("KinematicBody2D",true,false)
-	#playerNode.connect("player_hit",self,"restarVida")
+	#----------------
+	
+	#FRESITAS
+	var fresitaNode = get_tree().get_root().find_node("Fresita",true,false)
+	var fresitaNode2 = get_tree().get_root().find_node("Fresita2",true,false)
+	var fresitaNode3 = get_tree().get_root().find_node("Fresita3",true,false)
+	var fresitaNode4 = get_tree().get_root().find_node("Fresita4",true,false)
+	var fresitaNode5 = get_tree().get_root().find_node("Fresita5",true,false)
+	var fresitaNode6 = get_tree().get_root().find_node("Fresita6",true,false)
+	var fresitaNode7 = get_tree().get_root().find_node("Fresita7",true,false)
+	var fresitaNode8 = get_tree().get_root().find_node("Fresita8",true,false)
+	var fresitaNode9 = get_tree().get_root().find_node("Fresita9",true,false)
+	var fresitaNode10 = get_tree().get_root().find_node("Fresita10",true,false)
+	var fresitaNode11 = get_tree().get_root().find_node("Fresita11",true,false)
+	var fresitaNode12 = get_tree().get_root().find_node("Fresita12",true,false)
+	
+	fresitaNode.connect("fresitaCollected",self,"handleFresitaCollected")
+	fresitaNode2.connect("fresitaCollected",self,"handleFresitaCollected")
+	fresitaNode3.connect("fresitaCollected",self,"handleFresitaCollected")
+	fresitaNode4.connect("fresitaCollected",self,"handleFresitaCollected")
+	fresitaNode5.connect("fresitaCollected",self,"handleFresitaCollected")
+	fresitaNode6.connect("fresitaCollected",self,"handleFresitaCollected")
+	fresitaNode7.connect("fresitaCollected",self,"handleFresitaCollected")
+	fresitaNode8.connect("fresitaCollected",self,"handleFresitaCollected")
+	fresitaNode9.connect("fresitaCollected",self,"handleFresitaCollected")
+	fresitaNode10.connect("fresitaCollected",self,"handleFresitaCollected")
+	fresitaNode11.connect("fresitaCollected",self,"handleFresitaCollected")
+	fresitaNode12.connect("fresitaCollected",self,"handleFresitaCollected")
+	$FresitasCollectedText.text = String(fresitas)
+	
+	
+	#MELONES
+	var meloncitoNode = get_tree().get_root().find_node("Meloncito",true,false)
+	var meloncitoNode2 = get_tree().get_root().find_node("Meloncito2",true,false)
+	var meloncitoNode3 = get_tree().get_root().find_node("Meloncito3",true,false)
+	var meloncitoNode4 = get_tree().get_root().find_node("Meloncito4",true,false)
+	var meloncitoNode5 = get_tree().get_root().find_node("Meloncito5",true,false)
+	var meloncitoNode6 = get_tree().get_root().find_node("Meloncito6",true,false)
+	var meloncitoNode7 = get_tree().get_root().find_node("Meloncito7",true,false)
+	var meloncitoNode8 = get_tree().get_root().find_node("Meloncito8",true,false)
+	var meloncitoNode9 = get_tree().get_root().find_node("Meloncito9",true,false)
+	var meloncitoNode10 = get_tree().get_root().find_node("Meloncito10",true,false)
+	var meloncitoNode11 = get_tree().get_root().find_node("Meloncito11",true,false)
+	var meloncitoNode12 = get_tree().get_root().find_node("Meloncito12",true,false)
+	
+	meloncitoNode.connect("meloncitoCollected",self,"handleMeloncitoCollected")
+	meloncitoNode2.connect("meloncitoCollected",self,"handleMeloncitoCollected")
+	meloncitoNode3.connect("meloncitoCollected",self,"handleMeloncitoCollected")
+	meloncitoNode4.connect("meloncitoCollected",self,"handleMeloncitoCollected")
+	meloncitoNode5.connect("meloncitoCollected",self,"handleMeloncitoCollected")
+	meloncitoNode6.connect("meloncitoCollected",self,"handleMeloncitoCollected")
+	meloncitoNode7.connect("meloncitoCollected",self,"handleMeloncitoCollected")
+	meloncitoNode8.connect("meloncitoCollected",self,"handleMeloncitoCollected")
+	meloncitoNode9.connect("meloncitoCollected",self,"handleMeloncitoCollected")
+	meloncitoNode10.connect("meloncitoCollected",self,"handleMeloncitoCollected")
+	meloncitoNode11.connect("meloncitoCollected",self,"handleMeloncitoCollected")
+	meloncitoNode12.connect("meloncitoCollected",self,"handleMeloncitoCollected")
 
-
+#Para las mandarinas
 func handleMandarinaCollected():
-	print("Mandarina Collected")
 	mandarinas += 1
 	$MandarinasCollectedText.text = String(mandarinas)
 	#PARA PASAR DE NIVEL esto planeo hacerlo con un botón pero no va
 	if $MandarinasCollectedText.text == "12":
 		get_tree().change_scene("res://Level2.tscn")
 
+
+#Para las fresitas:
+func handleFresitaCollected():
+	fresitas += 1
+	$FresitasCollectedText.text = String(fresitas)
+	if $FresitasCollectedText.text == "12":
+		get_tree().change_scene("res://Level3.tscn") 
+	
+	
+#Para los meloncitos
+func handleMeloncitoCollected():
+	meloncitos += 1
+	$MeloncitosCollectedText.text = String(meloncitos)
+	if $MeloncitosCollectedText.text == "12":
+		get_tree().change_scene("res://FINAL.tscn") 
+	
 
 #Para las vidas
 func handleHearts(var lifes):
@@ -87,7 +160,6 @@ func handleHearts(var lifes):
 
 
 func handleVidaCollected():
-	print("Vida Collected")
 	var player = get_tree().get_root().find_node("KinematicBody2D",true,false)
 	if player.lifes < 3:
 		player.lifes = player.lifes + 1
@@ -99,16 +171,8 @@ func handleVidaCollected():
 		heart2.visible = true
 	if player.lifes == 1:
 		heart1.visible = true
-	#$VidasCollectedText.text = String(vidas)
 
-#ESTO CREO QUE LO VOY A HACER CON UN CANVAS
-#Para que cuando pulses exit te pause el juego
-func _process(delta):
-	menu_ctrl()
 
-#Pues eso
-func menu_ctrl():
-	if Input.is_action_just_pressed("ui_cancel") and get_tree().paused:
-		get_tree().paused = false
-	elif Input.is_action_just_pressed("ui_cancel") and get_tree().paused == false:
-		get_tree().paused = true
+
+
+

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://FairyA.png" type="Texture" id=1]
+[ext_resource path="res://SONIDOS/cartoon_wink_magic_sparkle-6896.mp3" type="AudioStream" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -21,3 +22,7 @@ shape = SubResource( 1 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )
 animation = "Idle"
+
+[node name="Brilli" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+volume_db = 16.0

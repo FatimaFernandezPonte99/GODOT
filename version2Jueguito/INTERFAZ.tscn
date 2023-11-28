@@ -48,7 +48,7 @@ pause_mode = 2
 [node name="FONDO" type="ColorRect" parent="."]
 margin_right = 212.0
 margin_bottom = 41.0
-color = Color( 0.309804, 0.133333, 0.294118, 0.572549 )
+color = Color( 0.309804, 0.133333, 0.294118, 1 )
 
 [node name="TEXTO" type="Label" parent="."]
 margin_left = 40.0
