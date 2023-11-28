@@ -61,8 +61,8 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="CUADRO" type="ReferenceRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 384.0
+margin_bottom = 220.0
 border_color = Color( 0.0431373, 0.0392157, 0.0392157, 1 )
 
 [node name="BOTÓN" type="Button" parent="."]

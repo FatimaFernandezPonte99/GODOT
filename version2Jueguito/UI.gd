@@ -68,8 +68,8 @@ func handleMandarinaCollected():
 	mandarinas += 1
 	$MandarinasCollectedText.text = String(mandarinas)
 	#PARA PASAR DE NIVEL esto planeo hacerlo con un botón pero no va
-	if $MandarinasCollectedText.text == "12":
-		get_tree().change_scene("res://Level.tscn")
+	if $MandarinasCollectedText.text == "1":
+		get_tree().change_scene("res://Level2.tscn")
 
 
 #Para las vidas

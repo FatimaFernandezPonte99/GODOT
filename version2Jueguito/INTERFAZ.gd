@@ -1,11 +1,12 @@
 extends CanvasLayer
 
-enum NPCS{HADITA} #Solo hay uno así que 0
+enum NPCS{HADITA, HADITA2} #0,#1
 
 const IMAGENES : Dictionary = {
-	'HADITA' : preload ("res://FairyAID.png")
+	'HADITA' : preload ("res://FairyAID.png"),
+	'HADITA2': preload ("res://FairyA2ID2.png")
 }
-
+#FALTA PONER LA HADITA2 A PARTIR DE AQUÍ
 const TEXTOS_HADITA : Array = [
 	'HADITA: ¡Hola, pequeña brujilla!', #0
 	'HADITA: Que alegría verte por aquí...', #1
@@ -28,6 +29,21 @@ const TEXTOS_HADITA : Array = [
 	'HADITA: Mucha suerte *.*'
 ]
 
+const TEXTOS_HADITA2 : Array = [
+	'HADITA: Veo que has conseguido',
+	'HADITA: llegar hasta aquí...',
+	'HADITA: ¡Qué bien!',
+	'HADITA: ...',
+	'HADITA: Sí, la otra hadita',
+	'HADITA: es mi amiga,',
+	'HADITA: queremos hacer una',
+	'HADITA: fiesta de la',
+	'HADITA: macedonia!! ^-^',
+	'HADITA: si pudieras recoger',
+	'HADITA: estas ----',
+	'HADITA: por nosotras... *.*'
+]
+
 #Para ver por dónde va hablando
 var chats : int = 0
 
@@ -44,10 +60,16 @@ func poner_TEXTO(TEXTO:String, NPC:int, IMAGEN:Texture) -> void:
 	
 
 #NPC HADITA
-#Esto a lo mejor hay que ponerle más cosas en el título
 func _on_HADITA_body_entered(body):
 	if body.is_in_group("Player"):
 		poner_TEXTO(TEXTOS_HADITA[chats],NPCS.HADITA,IMAGENES['HADITA'])
+		chats += 1
+
+#NPC HADITA2
+#Esto a lo mejor tienes que conectarlo a mano
+func _on_HADITA2_body_entered(body):
+	if body.is_in_group("Player"):
+		poner_TEXTO(TEXTOS_HADITA2[chats],NPCS.HADITA2,IMAGENES['HADITA2'])
 		chats += 1
 
 
@@ -63,3 +85,12 @@ func _on_BOTN_pressed():
 				hide()
 				#LO DE DEJAR DE PAUSAR PERO TÚ NO LO VAS A HACER
 				#get_tree().paused = false
+		NPCS.HADITA2:
+			if chats < TEXTOS_HADITA2.size():
+				poner_TEXTO(TEXTOS_HADITA2[chats],NPCS.HADITA2,IMAGENES['HADITA2'])
+				chats += 1
+			else:
+				#conversación acabó
+				chats -= TEXTOS_HADITA2.size()
+				hide()
+				
