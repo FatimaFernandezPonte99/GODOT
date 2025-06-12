@@ -34,5 +34,8 @@ Desde el editor de Godot, selecciona la carpeta del proyecto y abre el archivo p
 3. Ejecutar localmente
 Pulsa el botón de "Play" en el editor
 
+## ✨ Personas desarrolladoras del proyecto
+ **[Fátima Fernández Ponte](https://github.com/fatimafernandezponte)**
+
 ## 📄 Licencia
 Este proyecto no tiene una licencia específica. Todos los derechos están reservados.
