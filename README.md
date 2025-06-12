@@ -1,6 +1,6 @@
 # GODOT
 
-🎮 Proyecto de videojuego
+##🎮 Proyecto de videojuego
 Este proyecto es un juego desarrollado con Godot Engine, un motor de videojuegos 2D y 3D multiplataforma, libre y de código abierto bajo licencia MIT .
 
 🎯 Acerca del proyecto
